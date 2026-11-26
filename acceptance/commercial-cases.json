@@ -1,0 +1,43 @@
+{
+  "currency": "INR",
+  "context": "Synthetic CityCare Block A examples for review. Monetary strings are decimal rupees.",
+  "allowance": {
+    "claimant": "Technician", "type": "Daily allowance", "days": 3, "rate": "400.00", "gst": "0.00",
+    "expected_amount": "1200.00", "route": ["Supervisor", "Site Engineer", "Head Office"],
+    "expected_status_after_site_engineer": "Approved",
+    "head_office_actions": ["Mark payable", "Record payment date and reference"],
+    "expected_actual_before_payment": "0.00", "expected_actual_after_payment_retry": "1200.00",
+    "expected_posting_count": 1, "cost_head": "Site overhead"
+  },
+  "routing_boundaries": [
+    {"technician_ordinary_total": "10000.00", "pm_required": false},
+    {"technician_ordinary_total": "10000.01", "pm_required": true}
+  ],
+  "rental": {
+    "claimant": "Technician", "tool": "Scaffolding", "chargeable_days": 1, "daily_rate": "500.00",
+    "expected_amount": "500.00", "route": ["Supervisor", "Site Engineer", "Project Manager", "Head Office"],
+    "expected_posted_before_payment": "0.00", "expected_posted_after_payment": "500.00"
+  },
+  "materials": {
+    "project": "CityCare Block A electrification", "site": "Block A",
+    "estimate": [
+      {"item": "CABLE-DEMO", "supplier": "Company", "unit": "m", "quantity": 100, "amount": "8000.00"},
+      {"item": "PANEL-DEMO", "supplier": "Client", "unit": "Nos", "quantity": 2, "company_cost": "0.00"}
+    ],
+    "indent": {"item": "CABLE-DEMO", "quantity": 110, "purpose": "Block A wiring", "route_fixture": ["Site Engineer", "Project Manager"]},
+    "tally_challans": [
+      {"source_line_key": "DEMO-DC1-1", "item": "CABLE-DEMO", "quantity": 60, "cost": "4800.00"},
+      {"source_line_key": "DEMO-DC2-1", "item": "CABLE-DEMO", "quantity": 50, "cost": "4250.00"}
+    ],
+    "expected_after_first": {"delivered": 60, "remaining_to_deliver": 40, "actual": "4800.00"},
+    "expected_after_both_and_reimport": {"delivered": 110, "remaining_to_deliver": 0, "over_quantity": 10, "actual": "9050.00", "variance_actual_minus_estimate": "1050.00", "client_billed": "0.00", "postings": 2},
+    "expected_client_item_indent": "Blocked"
+  },
+  "part_bill": {
+    "item": "20 W LED downlight", "approved_quantity": 400, "previously_billed": 0, "pm_certified": 10,
+    "bill_quantity": 10, "unit_rate": "1150.00", "gst_percent": 18, "retention_percent": 5,
+    "expected_work_value": "11500.00", "expected_gst": "2070.00", "expected_invoice_gross": "13570.00",
+    "expected_retention": "575.00", "expected_net_due": "12995.00", "remaining_certifiable_quantity": 390,
+    "expected_additional_391_before_variation": "Blocked"
+  }
+}
